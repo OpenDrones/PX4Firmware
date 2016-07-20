@@ -86,10 +86,15 @@ __EXPORT void weak_function stm32_spiinitialize(void)
 	stm32_gpiowrite(GPIO_SPI_CS_HMC, 1);
 	stm32_gpiowrite(GPIO_SPI_CS_MPU, 1);
 
-	stm32_configgpio(GPIO_EXTI_GYRO_DRDY);
-	stm32_configgpio(GPIO_EXTI_MAG_DRDY);
-	stm32_configgpio(GPIO_EXTI_ACCEL_DRDY);
-	stm32_configgpio(GPIO_EXTI_MPU_DRDY);
+	stm32_configgpio(GPIO_GYRO_DRDY_OFF);
+	stm32_configgpio(GPIO_MAG_DRDY_OFF);
+	stm32_configgpio(GPIO_ACCEL_DRDY_OFF);
+	stm32_configgpio(GPIO_EXTI_MPU_DRDY_OFF);
+
+	stm32_gpiowrite(GPIO_GYRO_DRDY_OFF, 0);
+	stm32_gpiowrite(GPIO_MAG_DRDY_OFF, 0);
+	stm32_gpiowrite(GPIO_ACCEL_DRDY_OFF, 0);
+	stm32_gpiowrite(GPIO_EXTI_MPU_DRDY_OFF, 0);
 #endif
 
 #ifdef CONFIG_STM32_SPI2
